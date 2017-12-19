@@ -11,7 +11,6 @@
 				<li class="nav-item" style="float: right;">
 	                <a class="nav-link" href="<?= base_url() ?>/index.php/main/logout">Đăng xuất</a>
 	            </li>
-
 			</ul>
 		</div>
 	</nav> 

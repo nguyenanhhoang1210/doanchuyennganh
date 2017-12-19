@@ -34,7 +34,7 @@
 													</div>
 												
 											<?php endforeach ?>
-									</select>
+											</select>
 									
 										</div>
 										</div>				
@@ -42,7 +42,6 @@
 								<input type="submit" class="btn btn-success btn-block" value="Tìm kiếm">
 							</div>
 							</div>
-				
 				</form>
 			</div>			  
 		</div>

@@ -62,8 +62,7 @@
 													</div>
 												
 											<?php endforeach ?>
-									</select>
-									
+											</select>
 										</div>
 										</div>				
 								</fieldset>
@@ -72,15 +71,12 @@
 									<label for="formGroupExampleInput2">Tên đề tài đăng ký</label>
 									<input type="text" name="tendetai" class="form-control" id="formGroupExampleInput2" placeholder="Web quản lý" required>
 								</fieldset>
-								
-								
 								<input type="submit" class="btn btn-success btn-block"  name="insert" value="Đăng Ký">
 								<?php  
 				                       echo '<label class="text-danger">'.$this->session->flashdata("error").'</label>';  
 				                    ?>  
 							</div>
 							</div>
-				
 				</form>
 			</div>			  
 		</div>

@@ -19,11 +19,13 @@
 			<?php foreach ($dulieutucontroller as $key => $value): ?>
 				<div class="col-sm-4">
 					<div class="card card-block">
+						
 						<p class="card-text">Họ tên sinh viên 1 : <?= $value['hoten1']?></p>
 						<p class="card-text">MSSV 1 : <?= $value['mssv1']?></p>
 						<p class="card-text">Họ tên sinh viên 2 : <?= $value['hoten2']?></p>
 						<p class="card-text">MSSV 2 : <?= $value['mssv2']?></p>
 						<p class="card-text">Lớp : <?= $value['lop']?></p>
+
 					</div>
 				</div>
 			<?php endforeach ?>

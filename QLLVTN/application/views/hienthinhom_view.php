@@ -3,21 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Xem dữ liệu</title>
-
 	<script type="text/javascript" src="<?php echo base_url(); ?>vendor/bootstrap.js"></script>
 	<script type="text/javascript" src="<?php echo base_url(); ?>1.js"></script>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>vendor/bootstrap.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>vendor/font-awesome.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>1.css">
 </head>
-
 <body>
 	<?php require('header_admin.php'); ?>
 	<div class="container">
 		<h3 class="text-xs-center">Thông tin nhóm</h3>
 		<hr>
 	</div>
-
 	<div class="container">
 		<div class="row">
 			<?php foreach ($dulieutucontroller as $key => $value): ?>

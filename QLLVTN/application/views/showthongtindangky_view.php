@@ -23,7 +23,6 @@
 					<div class="card card-block">
 						<p class="card-text">Họ tên giảng viên: <?= $value['tengv']?></p>
 						<p class="card-text">Hướng đề tài : <?= $value['tenhuonglvtn']?></p>
-						
 					</div>
 				</div>
 			<?php endforeach ?>
