@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class showDate extends CI_Controller {
+class hienthingay extends CI_Controller {
 
 	public function __construct()
 	{
@@ -11,9 +11,9 @@ class showDate extends CI_Controller {
 	{
 
 		$this->load->model('showData_model');
-    	$dulieu=$this->showData_model->getngay();
+    	$dulieu=$this->showData_model->getngay();//lấy dữ liệu từ database
     	$dulieu=array('dulieutucontroller' => $dulieu);
-		$this->load->view('showDate_view',$dulieu);
+		$this->load->view('hienthingay_view',$dulieu);//gửi dữ liệu đến view
 
 	}
 	public function deleteDate($madot)
@@ -32,10 +32,10 @@ class showDate extends CI_Controller {
 	public function editDate($madot)
 	{
 		$this->load->model('showData_model');
-		$ketqua=$this->showData_model->editById($madot);
+		$ketqua=$this->showData_model->editDate($madot);
 		$ketqua=array('mangdulieu' => $ketqua);
 
-		$this->load->view('editDate_view', $ketqua);
+		$this->load->view('suangay_view', $ketqua);
 
 	}
 	public function updateDate()
@@ -47,13 +47,14 @@ class showDate extends CI_Controller {
 		$ngayktlam=$this->input->post('tgktlam');
 
 		$this->load->model('showData_model');
-		if($this->showData_model->updateDateById($madot,$ngaybddk,$ngayktdk,$ngaybdlam,$ngayktlam))
+		if($this->showData_model->updateDate($madot,$ngaybddk,$ngayktdk,$ngaybdlam,$ngayktlam))
 		{
 			$this->load->view('insertthanhcong_view');
 		}
 		else
 		{
-			echo"khong thanh cong";
+			$this->session->set_flashdata('error_suangay', 'Cập nhật không thành công');
+			redirect('index.php/hienthingay','refresh');
 		}
 	}
 

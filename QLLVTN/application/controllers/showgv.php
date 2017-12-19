@@ -11,9 +11,11 @@ class showgv extends CI_Controller {
 	{
 
 		$this->load->model('showData_model');
-    	$dulieu=$this->showData_model->getdatabase();
-    	$dulieu=array('dulieutucontroller' => $dulieu);
+    	$dulieu=$this->showData_model->gv_huonglvtn();
+    	$dulieu1=$this->showData_model->gv_loaigv();
+    	$dulieu=array('dulieutucontroller' => $dulieu, 'dulieutucontroller1' => $dulieu1);
 		$this->load->view('showgv_view',$dulieu);
+	
 
 	}
 	public function deletegv($magv)
@@ -32,10 +34,12 @@ class showgv extends CI_Controller {
 	public function editgv($magv)
 	{
 		$this->load->model('showData_model');
-		$ketqua=$this->showData_model->editByIdgv($magv);
+		$ketqua=$this->showData_model->editgv($magv);
 		$ketqua=array('dulieu' => $ketqua);
 
 		$this->load->view('editgv_view', $ketqua);
+		
+
 
 	}
 	public function updategv()
@@ -45,8 +49,9 @@ class showgv extends CI_Controller {
 		$hocham=$this->input->post('hocham');
 		$hocvi=$this->input->post('hocvi');
 		$loaigv=$this->input->post('loaigv');
+		$huonggv=$this->input->post('huongdetai');
 		$this->load->model('showData_model');
-		if($this->showData_model->updategvById($magv,$tengv,$hocham,$hocvi,$loaigv))
+		if($this->showData_model->updategv($magv,$tengv,$hocham,$hocvi,$loaigv,$huonggv))
 		{
 			$this->load->view('insertthanhcong1_view');
 		}
