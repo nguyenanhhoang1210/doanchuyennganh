@@ -13,21 +13,30 @@ class addData_model extends CI_Model {
 	{
 		$dulieu = array('hoten1' =>$t1 ,'mssv1'=> $m1,'hoten2' =>$t2 ,'mssv2'=> $m2,'lop'=>$l,'nganh'=>$ng,'siso'=>$ss,'tendetai'=>$dtai,'ngaydangky'=>$ngdk,'magv'=>$gv);
 		$this->db->insert('nhom', $dulieu);
+
 		return $this->db->insert_id();
 	}
 	public function insertDate($tgbd,$tgkt,$tgbdlam,$tgktlam)
 	{
 		$dulieu1 = array('TGBatDauDK' =>$tgbd ,'TGKetThucDK'=> $tgkt,'TGBatDauLVTN' =>$tgbdlam ,'TGKetThucLVTN'=> $tgktlam);
 		$this->db->insert('dotdk', $dulieu1);
-		return $this->db->insert_id();
-	}
-	public function insertgv($tengv,$hocham,$hocvi,$idloaigv)
-	{
-		$dulieu2 = array('tengv' =>$tengv ,'hocham'=> $hocham,'hocvi' =>$hocvi ,'idloaigv'=> $idloaigv);
-		$this->db->insert('giangvien', $dulieu2);
-		return $this->db->insert_id();
-	}
 
+		return $this->db->insert_id();
+	}
+	public function insertgv($tengv,$hocham,$hocvi,$idloaigv,$Id)
+	{
+		$dulieu2 = array('tengv' =>$tengv ,'hocham'=> $hocham,'hocvi' =>$hocvi ,'idloaigv'=> $idloaigv,'Id'=>$Id);
+		$this->db->insert('giangvien', $dulieu2);
+
+		return $this->db->insert_id();
+	}
+	public function inserthuonglvtn($tenhuonglvtn)
+	{
+		$dulieu3 = array('tenhuonglvtn' =>$tenhuonglvtn);
+		$this->db->insert('huonglvtn', $dulieu3);
+		
+		return $this->db->insert_id();
+	}
 }
 
 /* End of file addData_model.php */

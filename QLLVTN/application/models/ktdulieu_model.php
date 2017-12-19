@@ -14,7 +14,6 @@ class ktdulieu_model extends CI_Model {
        $this->db->where('hoten1', $hoten1);
        $this->db->where('mssv2', $mssv2);
        $this->db->where('hoten2', $hoten2);
-
        return $this->db->get('nhom')->row();
      }
 
