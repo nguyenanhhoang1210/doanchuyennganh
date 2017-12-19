@@ -9,10 +9,15 @@ class showData_model extends CI_Model {
 		parent::__construct();
 		
 	}
-	public function getdatabase()
+	public function gv_huonglvtn()
 	{
+		
 		$this->db->select('*');
-		$ketqua=$this->db->get('giangvien');
+		$this->db->from('giangvien');
+		$this->db->join('huonglvtn', 'giangvien.Id = huonglvtn.Id', 'left');
+		
+		$ketqua=$this->db->get();
+		
 		$ketqua=$ketqua->result_array();
 		return $ketqua;
 
@@ -20,6 +25,17 @@ class showData_model extends CI_Model {
 		/*echo"<pre>";
 		var_dump($ketqua);
 		echo "</pre>";*/
+	}
+	public function gv_loaigv()
+	{
+		$this->db->select('*');
+		$this->db->from('giangvien');
+		$this->db->join('phanloaigv', 'giangvien.idloaigv = phanloaigv.idloaigv', 'left');
+		
+		$ketqua=$this->db->get();
+		
+		$ketqua=$ketqua->result_array();
+		return $ketqua;
 	}
 	public function getnhom()
 	{
@@ -40,6 +56,34 @@ class showData_model extends CI_Model {
 		$ketqua2=$ketqua2->result_array();
 		return $ketqua2;
 	}
+	public function deleteDate($madot)
+	{	
+		$this->db->where('MaDot', $madot);
+		return $this->db->delete('dotdk');
+	}
+	public function editDate($madot)
+	{
+		$this->db->select('*');
+		$this->db->where('MaDot', $madot);
+		$dulieu=$this->db->get('dotdk');
+		$dulieu=$dulieu->result_array();
+		//var_dump($dulieu);
+		return $dulieu;
+
+	}
+	public function updateDate($madot,$tgbd,$tgkt,$tgbdlam,$tgktlam)
+	{
+		$dulieucanupdate = array(
+			'MaDot' => $madot,
+			'TGBatDauDK' =>$tgbd,
+			'TGKetThucDK' =>$tgkt,
+			'TGBatDauLVTN' =>$tgbdlam,
+			'TGKetThucLVTN' =>$tgktlam
+		);
+
+		$this->db->where('MaDot', $madot);
+		return $this->db->update('dotdk', $dulieucanupdate);
+	}
 	public function getloaigv()
 	{
 		
@@ -56,64 +100,69 @@ class showData_model extends CI_Model {
 
 		return $this->db->delete('nhom');	
 	}
-	public function deleteDate($madot)
-	{	
-		
-			$this->db->where('MaDot', $madot);
-			return $this->db->delete('dotdk');
-	}
+	
 	public function deletegv($magv)
 	{	
 		
 			$this->db->where('magv', $magv);
 			return $this->db->delete('giangvien');
 	}
-	public function editById($madot)
+	
+	public function editgv($magv)
 	{
 		$this->db->select('*');
-		$this->db->where('MaDot', $madot);
-		$dulieu=$this->db->get('dotdk');
-		$dulieu=$dulieu->result_array();
-		var_dump($dulieu);
-		return $dulieu;
-
-	}
-	public function editByIdgv($magv)
-	{
-		$this->db->select('*');
+		$this->db->from('giangvien');
+		$this->db->join('phanloaigv', 'giangvien.idloaigv = phanloaigv.idloaigv', 'left');
+		$this->db->join('huonglvtn', 'giangvien.Id = huonglvtn.Id', 'left');
 		$this->db->where('magv', $magv);
-		$dulieu4=$this->db->get('giangvien');
+		$dulieu4=$this->db->get();
 		$dulieu4=$dulieu4->result_array();
-		var_dump($dulieu4);
+		//var_dump($dulieu4);
 		return $dulieu4;
 
 	}
-	public function updateDateById($madot,$tgbd,$tgkt,$tgbdlam,$tgktlam)
-	{
-		$dulieucanupdate = array(
-			'MaDot' => $madot,
-			'TGBatDauDK' =>$tgbd,
-			'TGKetThucDK' =>$tgkt,
-			'TGBatDauLVTN' =>$tgbdlam,
-			'TGKetThucLVTN' =>$tgktlam
-		);
-
-		$this->db->where('MaDot', $madot);
-		return $this->db->update('dotdk', $dulieucanupdate);
-	}
-	public function updategvById($magv,$tengv,$hocham,$hocvi,$loaigv)
+	
+	public function updategv($magv,$tengv,$hocham,$hocvi,$loaigv,$huongdetai)
 	{
 		$dulieucanupdate1 = array(
 			'magv' => $magv,
 			'tengv' =>$tengv,
 			'hocham' =>$hocham,
 			'hocvi' =>$hocvi,
-			'idloaigv' =>$loaigv
+			'idloaigv' =>$loaigv,
+			'Id'=>$huongdetai
 		);
 
 		$this->db->where('magv', $magv);
 		return $this->db->update('giangvien', $dulieucanupdate1);
 	}
+	public function gethuonglvtn()
+	{
+		$this->db->select('*');
+		$dulieu6=$this->db->get('huonglvtn');
+		$dulieu6=$dulieu6->result_array();
+		return $dulieu6;
+	}
+
+	public function getsv($magv)
+	{
+		$this->db->select('*');
+		$this->db->where('magv', $magv);
+		$dulieu5=$this->db->get('nhom');
+		$dulieu5=$dulieu5->result_array();
+		return $dulieu5;
+	}
+	public function gettheodetai($Id)
+	{
+		$this->db->select('*');
+		$this->db->from('giangvien');
+		$this->db->join('huonglvtn', 'giangvien.Id = huonglvtn.Id', 'left');
+		$this->db->where('giangvien.Id', $Id);
+		$dulieu5=$this->db->get();
+		$dulieu5=$dulieu5->result_array();
+		return $dulieu5;
+	}
+	
 }
 
 /* End of file showData_model.php */

@@ -21,13 +21,19 @@ class addData_model extends CI_Model {
 		$this->db->insert('dotdk', $dulieu1);
 		return $this->db->insert_id();
 	}
-	public function insertgv($tengv,$hocham,$hocvi,$idloaigv)
+	public function insertgv($tengv,$hocham,$hocvi,$idloaigv,$Id)
 	{
-		$dulieu2 = array('tengv' =>$tengv ,'hocham'=> $hocham,'hocvi' =>$hocvi ,'idloaigv'=> $idloaigv);
+		$dulieu2 = array('tengv' =>$tengv ,'hocham'=> $hocham,'hocvi' =>$hocvi ,'idloaigv'=> $idloaigv,'Id'=>$Id);
 		$this->db->insert('giangvien', $dulieu2);
 		return $this->db->insert_id();
 	}
-
+	public function inserthuonglvtn($tenhuonglvtn)
+	{
+		
+		$dulieu3 = array('tenhuonglvtn' =>$tenhuonglvtn);
+		$this->db->insert('huonglvtn', $dulieu3);
+		return $this->db->insert_id();
+	}
 }
 
 /* End of file addData_model.php */
