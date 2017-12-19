@@ -15,6 +15,7 @@
  		}
  	</style>
 </head>
+<?php  ?>
 <body>
 	<div class="container">
 		<h2 class="text-xs-center">Đăng nhập</h2>
@@ -28,16 +29,16 @@
 							<div class="card-block">
 								<fieldset class="form-group">
 									<label for="formGroupExampleInput">Username : </label>
-									<input type="text" name="username" class="form-control" id="formGroupExampleInput" placeholder="Nhập username">
-									<span class="text-danger"><?php  $this->load->library('form_validation');   echo form_error('username'); ?>
+									<input type="text" name="username" class="form-control" id="formGroupExampleInput" placeholder="Nhập username" pattern="[a-z]{1,15}" required>
+									
 								</fieldset>
 								<fieldset class="form-group">
 									<label for="formGroupExampleInput">Password : </label>
-									<input type="password" name="password" class="form-control" id="formGroupExampleInput" placeholder="Nhập password">
-									 <span class="text-danger"><?php echo form_error('password'); ?>
+									<input type="password" name="password" class="form-control" id="formGroupExampleInput" placeholder="Nhập password" pattern="[a-z]{1,15}" required>
+							
 								</fieldset>
-								<div class="col-sm-8 push-sm-6">
-									<input type="submit" class="btn btn-info"  name="login"value="Đăng nhập">
+								<div class="col-sm-8 push-sm-4">
+									<input type="submit" class="btn btn-info"  name="login" value="Đăng nhập">
 									<?php  
 				                       echo '<label class="text-danger">'.$this->session->flashdata("error").'</label>';  
 				                    ?>  
