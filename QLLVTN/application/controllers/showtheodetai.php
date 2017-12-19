@@ -11,8 +11,7 @@ class showtheodetai extends CI_Controller {
 		$this->load->model('showData_model');
     	$dulieu=$this->showData_model->gethuonglvtn();
     	$dulieu=array('dulieutucontroller' => $dulieu);
-		$this->load->view('thongtindangky_view',$dulieu);
-		
+		$this->load->view('thongtindangky_view',$dulieu);	
 	}
 	public function xuattheodetai()
 	{

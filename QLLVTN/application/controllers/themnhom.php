@@ -6,12 +6,10 @@ class themnhom extends CI_Controller {
 	{
 		parent::__construct();
 	}
-
 	public function index()
 	{
 		$this->load->model('showData_model');
     	$dulieu1=$this->showData_model->gv_huonglvtn();
-    	
     	$dulieu2=$this->showData_model->gethuonglvtn();
     	$dulieu1=array('dulieutucontroller1' => $dulieu1,'dulieutucontroller2' => $dulieu2);
 	   	$this->load->view('themnhom_view',$dulieu1);
@@ -46,15 +44,12 @@ class themnhom extends CI_Controller {
 					if($this->addData_model->insert($ht1,$mssv1,$ht2,$mssv2,$lop,$nganh,$siso,$tendetai,$ngaydangky,$dsgv))
 				{
 
-					echo "Đăng ký thành công";
-					
-					 
+					echo "Đăng ký thành công";	 
 				}
 				else
 				 {
 				 	echo "Đăng ký thật bại";
-				 }
-				 
+				 }	 
 			}	
 			else
 			{

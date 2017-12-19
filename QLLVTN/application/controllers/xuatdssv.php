@@ -6,7 +6,6 @@ class xuatdssv extends CI_Controller {
 	{
 		parent::__construct();
 	}
-
 	public function index()
 	{
 		$this->load->model('showData_model');
